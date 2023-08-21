@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[PHRIMZ] MATH WIZ</title>
+<body>
+    <div class="smiley">
+      <div class="eye left"></div>
+      <div class="eye right"></div>
+      <div class="mouth"></div>
+    </div>
+<style>
+    .styled-input {
+    border: none;
+    border-bottom: 2px solid #3498db;
+    border-top: 2px solid rgb(41, 177, 240);
+    outline: none;
+    padding: 10px;
+    font-size: 16px;
+    width: 300px;
+    transition: border-color 0.3s ease-in-out;
+    text-align: center;
+    font-family: cursive;
+    font-size: large;
+  }
+  .styled-input:focus {
+    border-color: #3ce753;}
+  body {
+    font-family: cursive;
+    animation: gradientAnimation 10s infinite alternate;
+  }
+  
+  @keyframes gradientAnimation {
+    0% {
+      background: linear-gradient(135deg, #3498db, #e74c3c);
+    }
+    100% {
+      background: linear-gradient(135deg, #e74c3c, #3498db);
+    }
+  }
+
+
+  #game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    animation: fadeIn 1s ease-in-out;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  #message {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  #restart-button {
+    margin-top: 10px;
+    display: none;
+  }
+
+
+  .styled-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #3498db;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  .styled-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .p {
+    transition: color 0.3s ease-in-out;
+    font-size: 2cm;
+    line-height: 1.6;
+    color: #000000;
+    margin-bottom: 15px;
+    animation: fadeIn 1s ease-in-out;
+    font-family: Jokerman
+    ;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .p:hover {
+    animation: colorChange 2s infinite;
+  }
+  @keyframes colorChange {
+    0% {
+      color: #3498db;
+    }
+    10%{border-top: double;}
+    25% {
+      color: #e74c3c;
+    }
+    35%{border-right: double;}
+    50% {
+      color: #27ae60;
+    }
+    60%{border-bottom: double;}
+    75% {
+      color: #f39c12;
+    }
+    85%{border-left: double;}
+    100% {
+      color: #3498db;
+    }
+  }
+.b {
+    font-size: 0.4cm;
+    line-height: 1.6;
+    color: #000000;
+    margin-bottom: 15px;
+    animation: fadeIn 1s ease-in-out;
+    font-family: Showcard Gothic
+    ;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .b:hover {
+    color: #6b15bb;
+    border: double;
+    border-color: aqua;
+    }
+
+
+  .open-modal-button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  .modal.open {
+    display: flex;
+    opacity: 1;
+  }
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    transform: scale(0.8);
+    transition: transform 0.3s ease-in-out;
+  }
+  .modal.open .modal-content {
+    transform: scale(1);
+  }
+  .close-modal-button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+
+  .smiley {
+    width: 100px;
+    height: 100px;
+    background-image: url(https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/cd82a47a7e29d7497c554f59f6324c67~c5_100x100.jpeg?x-expires=1692748800&x-signature=YllAO994M7rpuBl8JUlbG%2Fo%2Fseg%3D);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    animation: bounce 2s infinite alternate;
+  }
+  .eye {
+    width: 15px;
+    height: 15px;
+    background-color: #000;
+    border-radius: 50%;
+    position: absolute;
+  }
+  .eye.left {
+    left: 30px;
+  }
+  .eye.right {
+    right: 30px;
+  }
+  .mouth {
+    width: 50px;
+    height: 20px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border: 2px solid #000;
+    position: absolute;
+    bottom: 20px;
+    left: 25px;
+  }
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+</style>
+</head>
+<body>
+  <div id="game-container">
+    <h1 class="p">MATH WIZ</h1>
+    <p class="b">Guess a number between 1 and 25:</p>
+    <input type="number" id="guess-input" min="1" max="25" class="styled-input" placeholder="INPUT NUMBER HERE">
+    
+
+    <button id="guess-button" class="styled-button">Submit Guess</button>
+    <p id="message"></p>
+    <button id="restart-button" class="styled-button">Restart Game ↻ </button>
+    
+  </div>
+
+  <body>
+    <div class="container">
+      <button class="open-modal-button" id="openModalButton">ABOUT</button>
+    </div>
+  
+    <div class="modal" id="modal">
+      <div class="modal-content">
+        <h2>ABOUT</h2>
+        <p>Introducing "Math Wiz" - Embark on a Numerical Adventure
+
+            Dive into the world of numbers with "Math Wiz," a thrilling and educational game that brings the excitement of mathematics to your fingertips. Created by visionary game developer Immanuel Frimpong[CORY PHRIMZ], this innovative game is a testament to Immanuel's passion for both gaming and education.
+            
+            Immanuel Frimpong, born on October 5, 2008, has harnessed his youthful energy and creative genius to craft an engaging and interactive math experience. With "Math Wiz," he seeks to make learning mathematics enjoyable and rewarding for players of all ages.
+            
+           
+            Join us now in the world of "Math Wiz" and unleash your inner mathematical genius!
+        <br>
+        
+        Are you ready to put your logical thinking to the test? In "Math Wiz," your mission is to guess a secret number hidden between 1 and 25. But here's the catch – you only have five attempts to crack the code and reveal the mystery number. Do you have what it takes to become the ultimate "Math Wiz"?
+
+Here's how to play: <br>
+
+1.Guess the Secret Number: The game will present you with a challenge to guess the secret number. This number is randomly chosen and lies somewhere between 1 and 25.
+<br>
+
+2.Use Your Logic: With each attempt, you'll need to apply your logical thinking and deductive reasoning. Think about the numbers you've guessed, the feedback you've received, and adjust your strategy accordingly.
+<br>
+
+3.Make Your Guess: Input your guess into the game interface. Choose a number that you believe could be the secret number. Click on the "Submit" button to lock in your guess.
+
+<br>
+4.Receive Feedback: After each guess, the game will provide you with feedback. You'll learn whether your guess is too high, too low, or if you've hit the jackpot and guessed the correct number!
+
+<br>
+5.Stay Sharp: As you make more guesses, keep refining your approach based on the feedback. Each guess brings you closer to uncovering the hidden number.
+<br>
+6.Five Tries Only: Remember, you have only five attempts to guess the secret number. So, use your tries wisely and strategize to maximize your chances of success.
+<br>
+
+7.Become the Math Wiz: Will you crack the code and unveil the mystery number within five attempts? Show off your logical prowess and become the ultimate "Math Wiz" by solving this intriguing challenge.
+<br>
+
+Are you up for the challenge? Prepare your logical thinking, put your deductive skills to work, and let the games begin in "Math Wiz"! Good luck, and may the numbers be in your favor
+        </p>
+        <button class="close-modal-button" id="closeModalButton">Close</button>
+      </div>
+    </div>
+
+  <script>
+    const minNumber = 1;
+    const maxNumber = 25;
+    let targetNumber;
+    let remainingChances = 5;
+    let incorrectGuesses = 0;
+    const messageElement = document.getElementById("message");
+    const guessInput = document.getElementById("guess-input");
+    const guessButton = document.getElementById("guess-button");
+    const restartButton = document.getElementById("restart-button");
+    const openModalButton = document.getElementById("openModalButton");
+    const modal = document.getElementById("modal");
+    const closeModalButton = document.getElementById("closeModalButton");
+
+    function updateMessage(message) {
+      messageElement.textContent = message;
+    }
+
+    function checkGuess(guess) {
+      if (guess < targetNumber) {
+        updateMessage("Try a higher number.");
+      } else if (guess > targetNumber) {
+        updateMessage("Try a lower number.");
+      } else {
+        updateMessage(`Congratulations! You guessed the number ${targetNumber} correctly.`);
+        guessInput.disabled = true;
+        guessButton.disabled = true;
+        restartButton.style.display = "block";
+      }
+
+      if (remainingChances === 0 && guess !== targetNumber) {
+        updateMessage(`Game Over! The number was ${targetNumber}. You made ${incorrectGuesses} incorrect guesses.`);
+        guessInput.disabled = true;
+        guessButton.disabled = true;
+        restartButton.style.display = "block";
+      }
+    }
+
+    guessButton.addEventListener("click", () => {
+      const guess = parseInt(guessInput.value);
+
+      if (isNaN(guess) || guess < minNumber || guess > maxNumber) {
+        updateMessage("Please enter a valid number between 1 and 25.");
+        return;
+      }
+
+      if (guess !== targetNumber) {
+        incorrectGuesses++;
+      }
+
+      remainingChances--;
+      checkGuess(guess);
+    });
+
+    restartButton.addEventListener("click", () => {
+      remainingChances = 5;
+      incorrectGuesses = 0;
+      targetNumber = Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
+      guessInput.value = "";
+      updateMessage("");
+      guessInput.disabled = false;
+      guessButton.disabled = false;
+      restartButton.style.display = "none";
+    });
+
+    openModalButton.addEventListener("click", () => {
+      modal.classList.add("open");
+    });
+
+    closeModalButton.addEventListener("click", () => {
+      modal.classList.remove("open");
+    });
+
+    // Initial game setup
+    targetNumber = Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
+  </script>
+</body>
+</html>
